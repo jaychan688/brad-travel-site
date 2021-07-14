@@ -1,0 +1,62 @@
+/* Reusable block class */
+.headline {
+	font-weight: 300;
+	font-size: 1.9rem;
+	color: $mainBlue;
+
+	strong {
+		font-weight: 400;
+	}
+
+	@mixin atSmall {
+		font-size: 2.875rem;
+	}
+
+	&--orange {
+		color: $mainOrange;
+	}
+
+	&--centered {
+		text-align: center;
+	}
+
+	&--small {
+		font-size: 1.2rem;
+
+		@mixin atSmall {
+			font-size: 1.875rem;
+		}
+	}
+
+	&--light {
+		font-weight: 100;
+	}
+
+	&--narrow {
+		/* 
+		Give block element a max-width and auto margin, 
+		force content to horizontally center, and make 
+		letters inside that block to wrap to next line
+		*/
+		max-width: 500px;
+		margin-left: auto;
+		margin-right: auto;
+	}
+
+	/* 
+    "em" can relative to the font size of the element itself.
+    which means we can reuse class on headlines that have different
+		font size. and this will scale with it really nicely
+  */
+	&--b-margin-small {
+		margin-bottom: 0.5em;
+	}
+
+	&--b-margin-large {
+		margin-bottom: 1.6em;
+	}
+
+	&--no-t-margin {
+		margin-top: 0px;
+	}
+}

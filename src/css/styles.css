@@ -2,19 +2,33 @@
 @import 'base/_variables';
 @import 'base/_mixins';
 @import 'base/_global';
-@import 'modules/_large-hero';
-@import 'modules/_btn';
-@import 'modules/_wrapper';
-@import 'modules/_page-section';
-@import 'modules/_headline';
-@import 'modules/_row';
+
+/* 
+  page-section在外層, 包住 wrapper
+  page-section 的目的: 
+    1. full-width的 background, 
+    2. section與section之間的分隔(bottom-margin)
+  wrapper的目的:包住內容(text, image)並置中
+ */
+@import 'generic/_page-section';
+@import 'generic/_wrapper';
+/* 
+  When it comes to something as generic and repateable as a paragraph
+  the author consider don't want to apply a class to each and every one of them.
+  break the BEN way to doing things.
+  */
 @import 'modules/_generic-content-container';
+@import 'generic/_headline';
+@import 'generic/_btn';
+@import 'generic/_row';
+
+@import 'modules/_site-header';
+@import 'modules/_primary-nav';
+@import 'modules/_large-hero';
 @import 'modules/_section-title';
 @import 'modules/_feature-item';
 @import 'modules/_testimonial';
+@import 'modules/_reveal-item';
+@import 'modules/_social-icons';
 @import 'modules/_site-footer';
-@import 'modules/_site-header.css';
-@import 'modules/_primary-nav.css';
-@import 'modules/_reveal-item.css';
-@import 'modules/_modal.css';
-@import 'modules/_social-icons.css';
+@import 'modules/_modal';

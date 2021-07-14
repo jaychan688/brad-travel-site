@@ -1,3 +1,8 @@
+/* 
+	Reusable block class 
+	Each section is a block, and can be reuse.
+	ex. beginning block, feature block, testimonial block
+*/
 .page-section {
 	padding: 1.2rem 0;
 
@@ -7,7 +12,7 @@
 
 	&--blue {
 		background: $mainBlue;
-		color: white;
+		color: #fff;
 	}
 
 	&--no-b-padding-until-medium {
@@ -30,7 +35,10 @@
 		background: #e0e6ef;
 
 		@mixin atLarge {
-			/* URL 以 styles.css 檔案所在位置為起始點, build 時 會複製圖片並亂數取名 */
+			/* 
+			所有的 css 檔都 import進 style.css,
+			url() 以 styles.css 檔案所在位置為起始點的相對位置路經, 
+			build 時 會複製圖片並亂數取名 */
 			background: url('../images/testimonials-bg.jpg') top center no-repeat;
 			background-size: cover;
 		}

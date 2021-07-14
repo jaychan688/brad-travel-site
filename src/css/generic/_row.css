@@ -1,0 +1,140 @@
+/* 
+Reusable block class
+Column layout: grid system before flex and grid.
+*/
+.row {
+	@mixin clearfix;
+
+	&--gutters {
+		/* 
+      Select parent row to remove the final gutter on the end,
+      negative margin will overflow the parent wrapper class.
+      so the wrapper class  has set overflow:hidden
+     */
+		margin-right: -65px;
+	}
+
+	&--gutters > div {
+		/* select this modifier's direct children,
+       and this will create gutter effect  */
+		padding-right: 65px;
+	}
+
+	&--gutters-large {
+		margin-right: -100px;
+	}
+
+	&--gutters-large > div {
+		padding-right: 100px;
+	}
+
+	&--gutters-small {
+		margin-right: -45px;
+	}
+
+	&--gutters-small > div {
+		padding-right: 45px;
+	}
+
+	&__b-margin-until-medium {
+		/* 
+		Small screen give it a bottom-margin,
+		At medium screen, set to 0. 
+	*/
+		margin-bottom: 1rem;
+		@mixin atMedium {
+			margin-bottom: 0px;
+		}
+	}
+
+	&__b-margin-until-large {
+		@mixin atLarge {
+			margin-bottom: 0px;
+		}
+	}
+
+	&--t-padding {
+		padding-top: 80px;
+	}
+
+	/* Begin Equal Height Rules*/
+	&--equal-hight-at-medium {
+		@mixin atMedium {
+			display: flex;
+		}
+
+		& > div {
+			float: none;
+			display: flex;
+		}
+	}
+
+	&--equal-hight-at-large {
+		@mixin atLarge {
+			display: flex;
+		}
+
+		& > div {
+			float: none;
+			display: flex;
+		}
+	}
+
+	/*
+    Small screen use a single column layout. don't need
+    to do anything. 
+    Only if a screen is considered medium or larger 
+    will apply the multi column layout.  
+  */
+	@mixin atMedium {
+		&__medium-4 {
+			float: left;
+			width: 33.33%;
+		}
+
+		/* Using modifier to override the column grid when necessary, 
+    and won't break the origin 12 column ratio*/
+		&__medium-4--larger {
+			width: 37%;
+		}
+
+		&__medium-6 {
+			float: left;
+			width: 50%;
+		}
+
+		&__medium-8 {
+			float: left;
+			width: 66.66%;
+		}
+
+		&__medium-8--smaller {
+			width: 63%;
+		}
+	}
+
+	@mixin atLarge {
+		&__large-4 {
+			float: left;
+			width: 33.33%;
+		}
+
+		&__large-4--larger {
+			width: 37%;
+		}
+
+		&__large-6 {
+			float: left;
+			width: 50%;
+		}
+
+		&__large-8 {
+			float: left;
+			width: 66.66%;
+		}
+
+		&__large-8--smaller {
+			width: 63%;
+		}
+	}
+}

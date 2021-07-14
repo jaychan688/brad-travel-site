@@ -4,6 +4,7 @@
     "chunkhash",
     "hexrgba",
     "lazysizes",
-    "mixins"
+    "mixins",
+    "rgba"
   ]
 }
