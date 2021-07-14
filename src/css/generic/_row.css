@@ -9,13 +9,13 @@ Column layout: grid system before flex and grid.
 		/* 
       Select parent row to remove the final gutter on the end,
       negative margin will overflow the parent wrapper class.
-      so the wrapper class  has set overflow:hidden
+      so the wrapper class has to set overflow:hidden
      */
 		margin-right: -65px;
 	}
 
 	&--gutters > div {
-		/* select this modifier's direct children,
+		/* Select this modifier's direct children,
        and this will create gutter effect  */
 		padding-right: 65px;
 	}

@@ -1,38 +1,39 @@
 .section-title {
-  font-size: 2.55rem;
-  font-weight: 300;
-  text-align: center;
+	font-size: 2.55rem;
+	font-weight: 300;
+	text-align: center;
 
-  @mixin atSmall {
-    font-size: 3.75rem;
-  }
+	@mixin atSmall {
+		font-size: 3.75rem;
+	}
 
-  &__icon {
-    display: block;
-    margin-right: auto;
-    margin-left: auto;
-    margin-bottom: 0.6rem;
+	strong {
+		font-weight: 500;
+	}
 
-    @mixin atSmall {
-      position: relative;
-      top: 8px;
-      margin-right: .5rem;
-      margin-left: 0;
-      margin-bottom: 0;
-      display: inline-block;
-    }
-  }
+	&__icon {
+		display: block;
+		margin-right: auto;
+		margin-left: auto;
+		margin-bottom: 0.6rem;
 
-  strong {
-    font-weight: 500;
-  }
+		@mixin atSmall {
+			display: inline-block;
+			/* Moveing icon down about 8px */
+			position: relative;
+			top: 8px;
+			margin-right: 0.5rem;
+			margin-left: 0;
+			margin-bottom: 0;
+		}
+	}
 
-  &--blue {
-    color: $mainBlue;
-  }
+	&--blue {
+		color: $mainBlue;
+	}
 
-  &--less-margin {
-    margin-bottom: 1.3rem;
-    margin-top: 0;
-  }
+	&--less-margin {
+		margin-bottom: 1.3rem;
+		margin-top: 0;
+	}
 }
