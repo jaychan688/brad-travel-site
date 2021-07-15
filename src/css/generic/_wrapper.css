@@ -28,7 +28,8 @@
 	&--medium {
 		/* 
 		overwrite the default max-width seeting, make content more narrow, 
-		and .wrapper already auto margin, will center the block horizontally */
+		and .wrapper already auto margin, will center the block horizontally 
+	*/
 		max-width: 976px;
 	}
 
@@ -45,10 +46,12 @@
 	}
 
 	&--no-padding-until-medium {
+		/* On small screen, don't need padding, make content full of all available width*/
 		padding-left: 0;
 		padding-right: 0;
 
 		@mixin atMedium {
+			/* on medium size, do need padding */
 			padding-left: 18px;
 			padding-right: 18px;
 		}

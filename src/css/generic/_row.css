@@ -24,16 +24,22 @@ Column layout: grid system before flex and grid.
 		margin-right: -100px;
 	}
 
-	&--gutters-large > div {
-		padding-right: 100px;
+	&--gutters-large {
+		& > div,
+		& > article {
+			padding-right: 100px;
+		}
 	}
 
 	&--gutters-small {
 		margin-right: -45px;
 	}
 
-	&--gutters-small > div {
-		padding-right: 45px;
+	&--gutters-small {
+		& > div,
+		& > article {
+			padding-right: 45px;
+		}
 	}
 
 	&__b-margin-until-medium {
@@ -48,22 +54,37 @@ Column layout: grid system before flex and grid.
 	}
 
 	&__b-margin-until-large {
+		/* 
+		Small screen give it a bottom-margin,
+		At medium screen, set to 0. 
+	*/
+		margin-bottom: 1rem;
 		@mixin atLarge {
 			margin-bottom: 0px;
 		}
 	}
 
 	&--t-padding {
+		/* 
+		In testimonial section, Because the .testimonial__photo 
+		using relative position to offset top -80px, pull up ou of 
+		it's natural postion, it will cause overlapping, so set the
+		container padding-top to container the offset.
+		*/
 		padding-top: 80px;
 	}
 
-	/* Begin Equal Height Rules*/
+	/* 
+	Begin Equal Height Rules
+	Flexbox default align-items:stretch, so flex-item are all equal-height
+	*/
 	&--equal-hight-at-medium {
 		@mixin atMedium {
 			display: flex;
 		}
-
-		& > div {
+		/* ?我不是很懂得是, 既然用了flexbox, 幹嘛還用float, 然後overwrite */
+		& > div,
+		& > article {
 			float: none;
 			display: flex;
 		}
@@ -73,8 +94,8 @@ Column layout: grid system before flex and grid.
 		@mixin atLarge {
 			display: flex;
 		}
-
-		& > div {
+		& > div,
+		& > article {
 			float: none;
 			display: flex;
 		}

@@ -1,41 +1,65 @@
 .testimonial {
-  background: rgba(255, 255, 255, .8);
-  padding: 0 18px 0 18px;
-  margin-bottom: 98px;
+	background: rgba(255, 255, 255, 0.8);
+	padding: 0 18px 0 18px;
+	/* 
+    Because the photo div offset it's position -80px,
+    prevent the overlapping on small screen, set maring-bottom:98px
+  */
+	margin-bottom: 98px;
 
-  @mixin atLarge {
-    margin-bottom: 0;
-    padding: 0 1.8rem 1px 1.8rem;
-  }
+	@mixin atLarge {
+		/* Don't need bottom margin in large screen */
+		margin-bottom: 0;
+		padding: 0 1.8125rem 1px 1.8125rem;
+	}
 
-  &__photo {
-    border-radius: 80px;
-    overflow: hidden;
-    width: 160px;
-    height: 160px;
-    margin: 0 auto -80px auto;
-    position: relative;
-    top: -80px;
-    border: 6px solid rgba(255, 255, 255, .8);
-  }
+	&__photo {
+		/* .testimonial__photo are apply to a Div. and wrap an img elemnet. */
+		border-radius: 80px;
+		/* 
+      img is inline, when outer container set border-radius set to 100% 
+      inline element won't effect and the content appearing outside of the box,
+      so need set overflow to hidden.
+    */
+		overflow: hidden;
+		/* 
+    container div default is using the full avaliable width,
+    border-radius won't show in the right side, set the container
+    width and height match the image size, and b border-radius will apply.
+    also container div need overflow:hidden.
+    */
+		width: 160px;
+		height: 160px;
+		/* 
+      center container div horizontally, 
+      為了搭配 position的位移(因為 relative 會保留原本的位置),
+      整個div也要向上位移 -80px,下方內容才會往上移動.
+    */
+		margin: 0 auto -80px auto;
+		/* 包住圖片位移突出外層container，呈現圖片效果 */
+		position: relative;
+		top: -80px;
+		border: 6px solid rgba(255, 255, 255, 0.8);
+	}
 
-  &__title {
-    color: $mainBlue;
-    text-align: center;
-    font-size: 1.5rem;
-    font-weight: 500;
-    margin: 0;
-  }
+	&__title {
+		color: $mainBlue;
+		text-align: center;
+		font-size: 1.5rem;
+		font-weight: 500;
+		margin: 0;
+	}
 
-  &__subtitle {
-    color: $mainOrange;
-    text-align: center;
-    font-weight: 400;
-    font-size: 0.9rem;
-    margin: .25rem;
-  }
+	&__subtitle {
+		color: $mainOrange;
+		text-align: center;
+		font-weight: 400;
+		font-size: 0.9375rem;
+		margin: 0.25rem 0 1rem 0;
+	}
 
-  &--last {
-    margin-bottom: 0;
-  }
+	&--last {
+		/* remove the cap in small screen */
+		margin-bottom: 0;
+	}
 }

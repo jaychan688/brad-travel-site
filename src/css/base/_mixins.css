@@ -7,13 +7,13 @@
 
 @define-mixin atMedium {
 	/* At least 800px or larger */
-	@media screen and (min-width: 800px) {
+	@media screen and (min-width: 768px) {
 		@mixin-content;
 	}
 }
 
 @define-mixin atLarge {
-	@media screen and (min-width: 1010px) {
+	@media screen and (min-width: 1024px) {
 		@mixin-content;
 	}
 }

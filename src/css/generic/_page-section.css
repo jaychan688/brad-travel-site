@@ -24,6 +24,10 @@
 	}
 
 	&--no-b-padding-until-large {
+		/* 
+		In small screen, don't need the bottom gap
+		between testimonial and footer section.
+		*/
 		padding-bottom: 0;
 
 		@mixin atLarge {
