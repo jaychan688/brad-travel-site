@@ -1,10 +1,20 @@
 .site-header {
+	/*
+		position:absolute Take the header out of the normal flow of the page 
+	*/
 	position: absolute;
 	padding: 10px 0;
+	/* 
+		By default absolute postion will try to shrink wrap and only use as much space
+		as it need to fit it's content.
+		width:100% to take the full width of outside container. 
+	*/
 	width: 100%;
+	/* z-index:2 move the header sit on top the hero */
 	z-index: 2;
-	/* when this element background-color changes, transition to the new value to fake in over 
-    of a centain period of time */
+	/* 
+	When this element background-color changes, transition to the new value to fake
+	in over of a centain period of time */
 	transition: background-color 0.3s ease-out;
 
 	@mixin atMedium {
@@ -21,19 +31,25 @@
 	}
 
 	&__logo {
+		/* 
+			Remove the logo from the nature flow of the page,
+			the .site-header background won't even be aware the logo exists 
+		*/
 		position: absolute;
 		top: 0;
+		/* small screen, left and transform keep the logo center horizontally */
 		left: 50%;
 		transition: transform 0.3s ease-out;
 		transform: translateX(-50%) scale(0.8);
 		transform-origin: 50% 0;
 		background-color: $mainBlue;
-		padding: 25px 36px;
+		padding: 13px 29px;
 
 		@mixin atMedium {
+			/* medium screen, undo left and transform property */
 			left: auto;
 			transform: translateX(0);
-
+			padding: 25px 36px;
 			.site-header--dark & {
 				transform: scale(0.55);
 			}
@@ -46,13 +62,15 @@
 		right: 10px;
 		width: 20px;
 		height: 19px;
-		/* add z-index prevernt the menu-content overlapping issue*/
+		/* add z-index prevent the menu-content overlapping issue*/
 		z-index: 10;
 
 		@mixin atMedium {
+			/* Don't dispaly in medium screen */
 			display: none;
 		}
 
+		/* Build the three horizontal bars icon */
 		&::before {
 			position: absolute;
 			top: 0;
@@ -60,7 +78,7 @@
 			content: '';
 			width: 20px;
 			height: 3px;
-			background-color: white;
+			background-color: #fff;
 			transform-origin: 0 0;
 			transition: transform 0.3s ease-out;
 		}
@@ -131,6 +149,7 @@
 
 	&__btn-container {
 		@mixin atMedium {
+			/* move button to the right*/
 			float: right;
 		}
 	}

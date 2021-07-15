@@ -21,6 +21,10 @@
 		position: absolute;
 		top: 50%;
 		left: 0;
+		/* 
+			site-header position:absolute, out of normal flow
+			add padding-top:60px make text-content keep vertical center. 
+		 */
 		padding-top: 60px;
 		transform: translateY(-50%);
 		/* Center in-line box horizontally */

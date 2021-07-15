@@ -1,0 +1,63 @@
+.primary-nav {
+	padding-top: 10px;
+
+	@mixin atMedium {
+		padding-top: 0;
+	}
+
+	&--pull-right {
+		@mixin atMedium {
+			float: right;
+		}
+	}
+	/* Break the BEM rules, The same reason with generic-container-container */
+	ul {
+		margin: 0;
+		padding: 0;
+		@mixin clearfix;
+	}
+
+	li {
+		list-style: none;
+		display: inline-block;
+		padding-right: 7px;
+
+		@mixin atMedium {
+			/* float:left make all list item in one line, padding-right  to add
+			 horizontal spaceing between each of these links*/
+			padding-right: 20px;
+			float: left;
+			display: block;
+		}
+	}
+
+	li:last-child {
+		/* Small screen don't need the space in the end element */
+		padding-right: 0;
+
+		@mixin atMedium {
+			padding-right: 20px;
+		}
+	}
+
+	a {
+		font-weight: 300;
+		color: #fff;
+		text-decoration: none;
+		display: block;
+		/* Add padding to align the links */
+		padding: 5px 8px;
+		font-size: 0.8rem;
+		background-color: rgba($mainBlue, 0.8);
+
+		@mixin atMedium {
+			font-size: 1rem;
+			padding: 12px 0;
+			background-color: transparent;
+
+			&.is-current-link {
+				color: #fabb69;
+			}
+		}
+	}
+}

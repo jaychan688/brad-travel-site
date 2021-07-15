@@ -1,18 +1,25 @@
 .site-footer {
-  background: $mainBlue;
-  color: white;
-  padding: 0 .5rem;
-  text-align: center;
+	background: $mainBlue;
+	color: #fff;
+	padding: 0 0.5rem;
+	/*
+  outer .wrapper just center the block element, 
+  text-align can center span and a element 
+  inside the .wrapper.  
+  */
+	text-align: center;
 
-  &__text {
-    display: block;
-    margin-bottom: 1rem;
-    font-weight: 200;
+	&__text {
+		/* Small screen, display:block push the <a> element to an new line */
+		display: block;
+		margin-bottom: 1rem;
+		font-weight: 200;
 
-    @mixin atMedium {
-      display: inline;
-      margin-bottom: 0;
-      margin-right: 1.4rem;
-    }
-  }
+		@mixin atMedium {
+			/* Medium screen, display:inline keep the element side by side. */
+			display: inline;
+			margin-bottom: 0;
+			margin-right: 1.4rem;
+		}
+	}
 }

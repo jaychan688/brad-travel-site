@@ -2,7 +2,6 @@
 @import 'base/_variables';
 @import 'base/_mixins';
 @import 'base/_global';
-
 /* 
   page-section在外層, 包住 wrapper
   page-section 的目的: 
@@ -17,18 +16,19 @@
   the author consider don't want to apply a class to each and every one of them.
   break the BEN way to doing things.
   */
-@import 'modules/_generic-content-container';
+@import 'generic/_generic-content-container';
 @import 'generic/_headline';
 @import 'generic/_btn';
 @import 'generic/_row';
+@import 'generic/_primary-nav';
+
+@import 'modules/_social-icons';
+@import 'modules/_section-title';
+@import 'modules/_modal';
 
 @import 'modules/_site-header';
-@import 'modules/_primary-nav';
 @import 'modules/_large-hero';
-@import 'modules/_section-title';
 @import 'modules/_feature-item';
 @import 'modules/_testimonial';
 @import 'modules/_reveal-item';
-@import 'modules/_social-icons';
 @import 'modules/_site-footer';
-@import 'modules/_modal';
