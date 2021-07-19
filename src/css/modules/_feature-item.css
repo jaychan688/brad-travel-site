@@ -1,32 +1,33 @@
+/* Using Position and padding to implement the two-column layout */
 .feature-item {
-  position: relative;
-  padding-bottom: 2.5rem;
+	position: relative;
+	padding-bottom: 2.5rem;
 
-  @mixin atSmall {
-    padding-left: 94px;
-  }
+	@mixin atSmall {
+		padding-left: 94px;
+	}
 
-  &__icon {
-    display: block;
-    margin: 0 auto;
+	&__icon {
+		display: block;
+		margin: 0 auto;
 
-    @mixin atSmall {
-      position: absolute;
-      left: 0;
-    }
-  }
+		@mixin atSmall {
+			position: absolute;
+			left: 0;
+		}
+	}
 
-  &__title {
-    font-size: 1.6rem;
-    font-weight: 300;
-    text-align: center;
-    margin-top: 0.7rem;
-    margin-bottom: 0.8rem;
+	&__title {
+		font-size: 1.6rem;
+		font-weight: 300;
+		text-align: center;
+		margin-top: 0.7rem;
+		margin-bottom: 0.8rem;
 
-    @mixin atSmall {
-      font-size: 1.875rem;
-      text-align: left;
-      margin-top: 1rem;
-    }
-  }
+		@mixin atSmall {
+			font-size: 1.875rem;
+			text-align: left;
+			margin-top: 1rem;
+		}
+	}
 }

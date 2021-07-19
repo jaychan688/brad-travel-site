@@ -7,22 +7,17 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const fse = require('fs-extra')
 
 const postCSSPlugins = [
-	// postcss-import plugin should probably be used as the first plugin of your list. This way, other plugins will work on the AST as if there were only a single file to process, and will probably work as you can expect.
+	/**
+	 * postcss-import should probably be used as the first plugin of your list.
+	 * This way, other plugins will work on the AST as if there were only a single file to process,
+	 */
 	require('postcss-import'),
-	require('postcss-mixins'),
-	require('postcss-simple-vars'),
-	require('postcss-nested'),
 	require('postcss-hexrgba'),
+	require('postcss-mixins'),
+	require('postcss-nested'),
+	require('postcss-simple-vars'),
 	require('autoprefixer'),
 ]
-
-class RunAfterCompile {
-	apply(compiler) {
-		compiler.hooks.done.tap('Copy images', () => {
-			fse.copySync('./src/images', './dist/images')
-		})
-	}
-}
 
 const cssConfig = {
 	test: /\.css$/i,
@@ -85,8 +80,8 @@ if (currentTask === 'start') {
 	cssConfig.use.unshift('style-loader')
 
 	config.output = {
-		filename: 'bundle.js',
-		// output the bundle.js to the src folder,side by side by the index.html, using absolute path.
+		filename: 'bundle.[hash].js',
+		// using absolute path, output the bundle.js to the src folder,side by side by the index.html.
 		path: path.resolve(__dirname, 'src'),
 	}
 
@@ -100,12 +95,18 @@ if (currentTask === 'start') {
 		port: 3000,
 		historyApiFallback: true,
 		// Let server to be accessible externally, allow mobile test
-		// Modify package.json, scripts -> "start": "webpack serve --open  --host localhost"
 		host: '0.0.0.0',
 	}
 
 	config.mode = 'development'
 	config.devtool = 'source-map'
+}
+class RunAfterCompile {
+	apply(compiler) {
+		compiler.hooks.done.tap('Copy images', () => {
+			fse.copySync('./src/images', './dist/images')
+		})
+	}
 }
 
 if (currentTask === 'build') {

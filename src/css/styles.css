@@ -4,9 +4,11 @@
 @import 'base/_global';
 /* 
   page-section在外層, 包住 wrapper
+  
   page-section 的目的: 
-    1. full-width的 background, 
+    1. full-width 的 background, 
     2. section與section之間的分隔(bottom-margin)
+  
   wrapper的目的:包住內容(text, image)並置中
  */
 @import 'generic/_page-section';

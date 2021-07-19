@@ -1,24 +1,23 @@
 .site-header {
-	/*
-		position:absolute Take the header out of the normal flow of the page 
-	*/
+	/* position:absolute Take the header out of the normal flow of the page */
 	position: absolute;
 	padding: 10px 0;
 	/* 
-		By default absolute postion will try to shrink wrap and only use as much space
-		as it need to fit it's content.
-		width:100% to take the full width of outside container. 
-	*/
+		By default absolute postion will try to shrink wrap and only use as much 
+		space as it need to fit it's content.width:100% to take the full width 
+		of outside container. */
 	width: 100%;
 	/* z-index:2 move the header sit on top the hero */
 	z-index: 2;
 	/* 
-	When this element background-color changes, transition to the new value to fake
-	in over of a centain period of time */
+	When this element background-color changes, transition to the new value to 
+	fake in over of a centain period of time */
 	transition: background-color 0.3s ease-out;
 
 	@mixin atMedium {
 		position: fixed;
+		/* Fallback */
+		background: rgba(0, 0, 0, 0.3);
 		background-color: rgba($mainBlue, 0.3);
 
 		&--dark {
@@ -26,15 +25,10 @@
 		}
 	}
 
-	&--is-expended {
-		background: rgba($mainBlue, 0.55);
-	}
-
 	&__logo {
 		/* 
 			Remove the logo from the nature flow of the page,
-			the .site-header background won't even be aware the logo exists 
-		*/
+			the .site-header background won't even be aware the logo exists */
 		position: absolute;
 		top: 0;
 		/* small screen, left and transform keep the logo center horizontally */
@@ -62,16 +56,18 @@
 		right: 10px;
 		width: 20px;
 		height: 19px;
-		/* add z-index prevent the menu-content overlapping issue*/
+		/* z-index prevent the menu-content overlapping issue*/
 		z-index: 10;
+		cursor: pointer;
 
 		@mixin atMedium {
 			/* Don't dispaly in medium screen */
 			display: none;
 		}
 
-		/* Build the three horizontal bars icon */
+		/* Build the three horizontal bars icon (hamburger icon)*/
 		&::before {
+			/* top bar */
 			position: absolute;
 			top: 0;
 			left: 0;
@@ -83,7 +79,8 @@
 			transition: transform 0.3s ease-out;
 		}
 
-		&__middle {
+		&--middle {
+			/* middle bar */
 			position: absolute;
 			top: 8px;
 			left: 0;
@@ -95,6 +92,7 @@
 		}
 
 		&::after {
+			/* bottom bar */
 			position: absolute;
 			bottom: 0;
 			left: 0;
@@ -105,35 +103,49 @@
 			transform-origin: 0 100%;
 			transition: transform 0.3s ease-out;
 		}
+
+		/* Build the X icon */
+		&--close-x {
+			&::before {
+				transform: rotate(45deg) scaleX(1.25);
+			}
+
+			.site-header__menu-icon--middle {
+				/* hidden the middle bar */
+				opacity: 0;
+				transform: scale(0);
+			}
+
+			&::after {
+				transform: rotate(-45deg) scaleX(1.25) translateY(1px);
+			}
+		}
 	}
 
-	&__menu-icon--close-x {
-		&::before {
-			transform: rotate(45deg) scaleX(1.25);
-		}
-
-		.site-header__menu-icon__middle {
-			opacity: 0;
-			transform: scale(0);
-		}
-
-		&::after {
-			transform: rotate(-45deg) scaleX(1.25) translateY(1px);
-		}
+	&--is-expended {
+		background: rgba(0, 0, 0, 0.55);
+		background: rgba($mainBlue, 0.55);
 	}
 
 	&__menu-content {
+		/* using z-index, position should set relative */
 		position: relative;
 		padding-top: 90px;
+		/* button and links inside &__menu-content are <a>, 
+			so text-align will cause horizontally center */
 		text-align: center;
-		/* using opacity to show the menu and prevent user accidentally click on */
+		/* 
+		hidden in small screen (not use display is because not apply to transition)
+		using opacity to show the menu and prevent user accidentally click on */
 		opacity: 0;
 		transition: all 0.3s ease-out;
 		/* zoom out effect */
 		transform: scale(1.2);
+		/* prevent accentally click in invisible content*/
 		z-index: -10;
 
 		@mixin atMedium {
+			/* show in medium screen opacity and z-index set back to 1*/
 			opacity: 1;
 			z-index: 1;
 			padding-top: 0;
@@ -141,6 +153,9 @@
 		}
 
 		&--is-visible {
+			/* 
+			click icon and toggle this class, show the content
+			opacity and z-index set back to 1 */
 			opacity: 1;
 			z-index: 1;
 			transform: scale(1);
@@ -149,7 +164,7 @@
 
 	&__btn-container {
 		@mixin atMedium {
-			/* move button to the right*/
+			/* in medium screen, move the button to the right */
 			float: right;
 		}
 	}

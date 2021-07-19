@@ -1,15 +1,18 @@
 .primary-nav {
-	padding-top: 10px;
+	padding-top: 1rem;
 
 	@mixin atMedium {
+		/* Don't need vertcal gap in medium screen */
 		padding-top: 0;
 	}
 
 	&--pull-right {
 		@mixin atMedium {
+			/* on medium screen, pull the <nav> to the right */
 			float: right;
 		}
 	}
+
 	/* Break the BEM rules, The same reason with generic-container-container */
 	ul {
 		margin: 0;
@@ -19,12 +22,13 @@
 
 	li {
 		list-style: none;
+		/* inline-block make <ii> to align in a row  */
 		display: inline-block;
 		padding-right: 7px;
 
 		@mixin atMedium {
-			/* float:left make all list item in one line, padding-right  to add
-			 horizontal spaceing between each of these links*/
+			/* float, display make all list-item move left and in one line, 
+			padding-right to add horizontal spaceing between each of these links*/
 			padding-right: 20px;
 			float: left;
 			display: block;
@@ -32,10 +36,11 @@
 	}
 
 	li:last-child {
-		/* Small screen don't need the space in the end element */
+		/* Small screen don't need the space in the last element */
 		padding-right: 0;
 
 		@mixin atMedium {
+			/* Medium screen need padding-right on the last <li> */
 			padding-right: 20px;
 		}
 	}
@@ -46,9 +51,11 @@
 		text-decoration: none;
 		display: block;
 		/* Add padding to align the links */
-		padding: 5px 8px;
-		font-size: 0.8rem;
+		padding: 10px 12px;
+		font-size: 1.2rem;
+		background: rgba(47, 85, 114, 0.8);
 		background-color: rgba($mainBlue, 0.8);
+		border-radius: 10px;
 
 		@mixin atMedium {
 			font-size: 1rem;

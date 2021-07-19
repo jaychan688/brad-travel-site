@@ -8,7 +8,7 @@
 	},
 	"scripts": {
 		"build": "webpack",
-		"start": "webpack serve --open  --host localhost"
+		"start": "webpack serve"
 	},
 	"repository": {
 		"type": "git",
