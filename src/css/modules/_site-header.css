@@ -18,6 +18,7 @@
 		position: fixed;
 		/* Fallback */
 		background: rgba(0, 0, 0, 0.3);
+		/* Error: postcss-hexrgba problem */
 		background-color: rgba($mainBlue, 0.3);
 
 		&--dark {

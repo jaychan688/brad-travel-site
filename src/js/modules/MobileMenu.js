@@ -1,4 +1,4 @@
-class MobileMenu {
+export default class MobileMenu {
 	constructor() {
 		// A. Selecting elements from the DOM
 		this.menuIcon = document.querySelector('.site-header__menu-icon')
@@ -23,5 +23,3 @@ class MobileMenu {
 		this.menuIcon.classList.toggle('site-header__menu-icon--close-x')
 	}
 }
-
-export default MobileMenu

@@ -1,66 +1,75 @@
-import throttle from 'lodash/throttle';
-import debounce from 'lodash/debounce';
+import throttle from 'lodash/throttle'
+import debounce from 'lodash/debounce'
 
 export default class StickyHeader {
-  constructor() {
-    this.siteHeader = document.querySelector('.site-header');
-    this.pageSections = document.querySelectorAll('.page-section');
-    this.browserHeight = window.innerHeight;
-    this.previousScrollY = window.scrollY;
-    this.events();
-  }
+	constructor() {
+		this.siteHeader = document.querySelector('.site-header')
+		this.pageSections = document.querySelectorAll('.page-section')
+		this.browserHeight = window.innerHeight
+		this.previousScrollY = window.scrollY
+		this.events()
+	}
 
-  events() {
-    window.addEventListener(
-      'scroll',
-      throttle(() => this.runOnScroll(), 200)
-    );
-    window.addEventListener(
-      'resize',
-      debounce(() => {
-        this.browserHeight = window.innerHeight;
-      }, 333)
-    );
-  }
+	events() {
+		window.addEventListener(
+			'scroll',
+			throttle(() => this.runOnScroll(), 200)
+		)
 
-  runOnScroll() {
-    this.determineScrollDirection();
-    if (window.scrollY > 60) {
-      this.siteHeader.classList.add('site-header--dark');
-    } else {
-      this.siteHeader.classList.remove('site-header--dark');
-    }
-    this.pageSections.forEach((el) => this.calcSection(el));
-  }
+		window.addEventListener(
+			'resize',
+			debounce(() => {
+				this.browserHeight = window.innerHeight
+			}, 333)
+		)
+	}
 
-  determineScrollDirection() {
-    if (window.scrollY > this.previousScrollY) {
-      this.scrollDirection = 'down';
-    } else {
-      this.scrollDirection = 'up';
-    }
-    this.previousScrollY = window.scrollY;
-  }
+	runOnScroll() {
+		this.determineScrollDirection()
 
-  calcSection(el) {
-    if (
-      window.scrollY + this.browserHeight > el.offsetTop &&
-      window.scrollY < el.offsetTop + el.offsetHeight
-    ) {
-      const scrollPercent =
-        (el.getBoundingClientRect().y / this.browserHeight) * 100;
-      if (
-        (scrollPercent < 18 &&
-          scrollPercent > -0.1 &&
-          this.scrollDirection === 'down') ||
-        (scrollPercent < 33 && this.scrollDirection === 'up')
-      ) {
-        const matchingLink = el.getAttribute('data-matching-link');
-        document
-          .querySelectorAll(`.primary-nav a:not(${matchingLink})`)
-          .forEach((el) => el.classList.remove('is-current-link'));
-        document.querySelector(matchingLink).classList.add('is-current-link');
-      }
-    }
-  }
+		// If user is scroll down 60px
+		if (window.scrollY > 60) {
+			this.siteHeader.classList.add('site-header--dark')
+		} else {
+			this.siteHeader.classList.remove('site-header--dark')
+		}
+
+		this.pageSections.forEach(el => this.calcSection(el))
+	}
+
+	calcSection(el) {
+		// if the section isn't in the browser's viewport at all, don't need calculation
+		if (
+			window.scrollY + this.browserHeight > el.offsetTop &&
+			window.scrollY < el.offsetTop + el.offsetHeight
+		) {
+			const scrollPercent =
+				(el.getBoundingClientRect().y / this.browserHeight) * 100
+
+			if (
+				(scrollPercent < 18 &&
+					scrollPercent > -0.1 &&
+					this.scrollDirection === 'down') ||
+				(scrollPercent < 33 && this.scrollDirection === 'up')
+			) {
+				const matchingLink = el.getAttribute('data-matching-link')
+
+				document
+					.querySelectorAll(`.primary-nav a:not(${matchingLink})`)
+					.forEach(el => el.classList.remove('is-current-link'))
+
+				document.querySelector(matchingLink).classList.add('is-current-link')
+			}
+		}
+	}
+
+	determineScrollDirection() {
+		if (window.scrollY > this.previousScrollY) {
+			this.scrollDirection = 'down'
+		} else {
+			this.scrollDirection = 'up'
+		}
+
+		this.previousScrollY = window.scrollY
+	}
 }

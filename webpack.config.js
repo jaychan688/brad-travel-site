@@ -12,10 +12,11 @@ const postCSSPlugins = [
 	 * This way, other plugins will work on the AST as if there were only a single file to process,
 	 */
 	require('postcss-import'),
-	require('postcss-hexrgba'),
+	require('postcss-simple-vars'),
 	require('postcss-mixins'),
 	require('postcss-nested'),
-	require('postcss-simple-vars'),
+	// won't work
+	require('postcss-hexrgba'),
 	require('autoprefixer'),
 ]
 
@@ -36,10 +37,10 @@ const cssConfig = {
 
 const pages = fse
 	.readdirSync('./src')
-	.filter((file) => {
+	.filter(file => {
 		return file.endsWith('.html')
 	})
-	.map((page) => {
+	.map(page => {
 		return new HtmlWebpackPlugin({
 			filename: page,
 			template: `./src/${page}`,
