@@ -9,10 +9,8 @@ export default class Modal {
 	}
 
 	events() {
-		// listen for open click
-		this.openModalButtons.forEach(el => {
-			el.addEventListener('click', e => this.openTheModal(e))
-		})
+		// when using code splitting tech, don't need openModal click event)
+
 		// listen for close click
 		this.closeIcon.addEventListener('click', () => this.closeTheModal())
 		// pushes esc key to close modal
@@ -23,9 +21,8 @@ export default class Modal {
 			.addEventListener('click', () => this.closeTheModal())
 	}
 
-	openTheModal(e) {
-		// prevent <a> default behavior
-		e.preventDefault()
+	openTheModal() {
+		// e.preventDefault has been implement in code spliting part.
 		this.modal.classList.add('modal--is-visible')
 	}
 

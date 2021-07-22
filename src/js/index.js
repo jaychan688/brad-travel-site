@@ -12,15 +12,17 @@ new MobileMenu()
 
 // Code Splitting
 let modal
-document.querySelectorAll('.open-modal').forEach((el) => {
-	el.addEventListener('click', (e) => {
+document.querySelectorAll('.open-modal').forEach(el => {
+	el.addEventListener('click', e => {
 		e.preventDefault()
-		console.log(modal)
+
+		// only if modal is not import, load the modal scripts
 		if (typeof modal === 'undefined') {
-			// Add prefix name - modal
+			// The comment is for add modal prefix to output bundle in webpack
 			import(/* webpackChunkName: "modal" */ './modules/Modal.js')
-				.then((module) => {
+				.then(module => {
 					modal = new module.default()
+
 					setTimeout(() => modal.openTheModal(), 20)
 				})
 				.catch(() => console.log('There was a problem.'))
